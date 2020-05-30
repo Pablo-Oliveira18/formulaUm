@@ -14,13 +14,12 @@
                         #{equipe.nome}
                     </p:column>
                     
-                    <p:column headerText="Editar">
-                        <p:commandButton action="teste" icon="ui-icon-pencil" value="Editar"/> 
+                    <p:column headerText="Editar" width="40" style="text-align: center">
+                        <p:commandButton title="Alterar" action="#{equipeMB.buscaDados(equipe)}" icon="ui-icon-pencil" /> 
                     </p:column>
                     
-                    <p:column headerText="Excluir">
-                        <p:commandButton action="teste" icon="ui-icon-trash" 
-                                         value="Excluir"
+                    <p:column headerText="Excluir" width="60" style="text-align: center">
+                        <p:commandButton action="#{equipeMB.excluir(equipe)}" icon="ui-icon-trash" title="excluir"
                                          onclick="if (!confirm('Confirma a exclusão?')) return false" 
                                          update=":form:growl"/>
                     </p:column>
