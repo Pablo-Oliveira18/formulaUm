@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+    font: 16px Verdana,Geneva sans-serif;
+    
+}
+
+.cabecalho{
+    width: 100%;
+    background: #e80000;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    border: 2px;
+    font-family: comic sans;
+    border-style: outset;
+    border-radius: 7.5em 7.5em;
+}
+
+.tituloCabecalho{
+    font-size: 26px;
+    font-weight: bold;
+    color: #d1d1d1; 
+}
+
+.rodape{
+    font: 12px Time News Roma;
+    font-size: 12px;
+    font-weight: lighter;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+
+.footer {
+    font: 12px Time News Roma;
+    font-size: 12px;
+    font-weight: lighter;
+    position:absolute;
+    bottom:0;
+    width:100%;
+}

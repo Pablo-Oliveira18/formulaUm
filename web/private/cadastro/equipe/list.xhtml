@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <ui:composition template="/private/template/template.xhtml">
+        <ui:define name="conteudo">
+            <p:panel id="panel" header="Equipes" style="margin: 15px;background-color: #e80000">
+                <p:dataTable value="" var="equipes" emptyMessage="Nenhuma equipe cadastrada" style="background-color: #363535">
+                    <p:column headerText="Nome">
+                        
+                    </p:column>
+                    <p:column headerText="Piloto principal">
+                        
+                    </p:column>
+                    <p:column headerText="Piloto secundário">
+                        
+                    </p:column>
+                    <p:column headerText="Funcionários">
+                        <p:commandButton action="teste" icon="ui-icon-clipboard" title="Lista de funcionários"/>
+                    </p:column>
+                    <p:column headerText="Editar">
+                        <p:commandButton action="teste" icon="ui-icon-pencil" value="Editar"/> 
+                    </p:column>
+                    <p:column headerText="Excluir">
+                        <p:commandButton action="teste" icon="ui-icon-trash" 
+                                         value="Excluir"
+                                         onclick="if (!confirm('Confirma a exclusão?')) return false" 
+                                         update=":form:growl"/>
+                    </p:column>
+                </p:dataTable>
+                <br/>
+                <br/>
+                <p:commandButton id="novo" action="teste" value="Novo" icon="ui-icon-plusthick"/>
+            </p:panel>
+        </ui:define>
+    </ui:composition>
+</html>
+
