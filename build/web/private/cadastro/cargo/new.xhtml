@@ -2,26 +2,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:p="http://primefaces.org/ui">
     <ui:composition template="/private/template/template.xhtml">
         <ui:define name="conteudo">
-            <p:panel id="panel" header="Novo piloto" style="margin: 15px;background-color: #e80000">
+            
+            <p:panel id="panel" header="Nova Função" style="margin: 15px;background-color: #e80000">
                 <div class="ui-g">
                     <div class="ui-g-12" style="color: #d1d1d1">
-                        <label> Nome: </label>
-                        <p:inputText id="nome"  style="width: 43%;" value="teste"
-                                     required="true" requiredMessage="Nome é obrigatório!"/>
-                        <label> Equipe: </label>
-                        <p:selectOneMenu id="equipe" value="teste" style="width: 43%"
-                                         required="true" requiredMessage="Equipe é obrigatória"
-                                         converter="entityConverter">
-                            <f:selectItems value="teste" var="equipe"
-                                           itemLabel="teste" itemValue="teste"/>
-                        </p:selectOneMenu>
+                        <label> Descrição: </label>
+                        <p:inputText id="nome" value="teste" style="width: 43%;" required="true" requiredMessage="Descrição é obrigatório!"/>
                     </div>
-                </div>              
+                </div>
                 <br/>
                 <br/>
                 <div align="center">

@@ -19,13 +19,17 @@
                         
                     </p:column>
                     <p:column headerText="Editar">
-                        <p:commandButton action="teste" icon="ui-icon-pencil" value="Editar"/> 
+                        <div align="center">
+                            <p:commandButton action="teste" icon="ui-icon-pencil" value="Editar"/> 
+                        </div> 
                     </p:column>
                     <p:column headerText="Excluir">
-                        <p:commandButton action="teste" icon="ui-icon-trash" 
+                        <div align="center">
+                            <p:commandButton action="teste" icon="ui-icon-trash" 
                                          value="Excluir"
                                          onclick="if (!confirm('Confirma a exclusão?')) return false" 
                                          update=":form:growl"/>
+                        </div> 
                     </p:column>
                 </p:dataTable>
                 <br/>
