@@ -11,15 +11,15 @@
                 <div class="ui-g">
                     <div class="ui-g-12" style="color: #d1d1d1">
                         <label> Nome: </label>
-                        <p:inputText id="nome"  style="width: 43%;" value="teste"
+                        <p:inputText id="nome"  style="width: 43%;" value="#{equipeMB.equipe.nome}"
                                      required="true" requiredMessage="Nome é obrigatório!"/>
                     </div>
                 </div>
                 <br/>
                 <br/>
                 <div align="center">
-                    <p:commandButton id="alterar" action="teste" value="Alterar" icon="ui-icon-transferthick-e-w" update="growl"/>
-                    <p:commandButton id="cancelar" action="teste" value="Cancelar" icon="ui-icon-closethick" immediate="true"/>
+                    <p:commandButton id="alterarBtn" action="#{equipeMB.alterar()}" value="Alterar" icon="ui-icon-transferthick-e-w" update="growl"/>
+                    <p:commandButton id="cancelar" action="#{equipeMB.cancelar()}" value="Cancelar" icon="ui-icon-closethick" immediate="true"/>
                 </div>
             </p:panel>
         </ui:define>
