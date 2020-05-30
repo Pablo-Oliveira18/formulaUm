@@ -21,7 +21,6 @@ public class EquipeController implements Serializable{
 
     public EquipeController() {
         listar();
-        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("servicoMB");
     }
 
     public void listar() {
@@ -30,6 +29,7 @@ public class EquipeController implements Serializable{
 
     public String novo() {
         equipe = new Equipe();
+        System.out.println(equipe.getId() + equipe.getNome());
         return "new.xhtml?faces-redirect=true";
     }
 
@@ -38,6 +38,7 @@ public class EquipeController implements Serializable{
     }
 
     public String salvar() {
+        System.out.println("AQ ESAT" +equipe.getNome());
         if (equipeService.inserir(equipe)) {
             UtilMensagens.mensagemSucesso("Sucesso", "Equipe salva com sucesso !");
             this.listar();

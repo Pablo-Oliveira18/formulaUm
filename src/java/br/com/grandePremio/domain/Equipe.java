@@ -1,46 +1,37 @@
 package br.com.grandePremio.domain;
 
 import java.io.Serializable;
-import java.util.Collection;
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
+import java.util.List;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+
 
 
 @Entity
 @Table(name = "equipe")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Equipe.findAll", query = "SELECT e FROM Equipe e")
-    , @NamedQuery(name = "Equipe.findById", query = "SELECT e FROM Equipe e WHERE e.id = :id")
-    , @NamedQuery(name = "Equipe.findByNome", query = "SELECT e FROM Equipe e WHERE e.nome = :nome")})
+
 public class Equipe implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Especifica do MY SQL, dizendo que o ID é grado automaticamente...
     private Integer id;
-    @Basic(optional = false)
+    
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "nome")
     private String nome;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEquipe")
-    private Collection<Funcionarios> funcionariosCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEquipe")
-    private Collection<Piloto> pilotoCollection;
+    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "idEquipe")
+    //private Collection<Funcionarios> funcionariosCollection;
+    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "idEquipe")
+    //private Collection<Piloto> pilotoCollection;
 
     public Equipe() {
     }
@@ -70,23 +61,23 @@ public class Equipe implements Serializable {
         this.nome = nome;
     }
 
-    @XmlTransient
-    public Collection<Funcionarios> getFuncionariosCollection() {
-        return funcionariosCollection;
-    }
-
-    public void setFuncionariosCollection(Collection<Funcionarios> funcionariosCollection) {
-        this.funcionariosCollection = funcionariosCollection;
-    }
-
-    @XmlTransient
-    public Collection<Piloto> getPilotoCollection() {
-        return pilotoCollection;
-    }
-
-    public void setPilotoCollection(Collection<Piloto> pilotoCollection) {
-        this.pilotoCollection = pilotoCollection;
-    }
+//    @XmlTransient;
+//    public Collection<Funcionarios> getFuncionariosCollection() {
+//        return funcionariosCollection;
+//    }
+//
+//    public void setFuncionariosCollection(Collection<Funcionarios> funcionariosCollection) {
+//        this.funcionariosCollection = funcionariosCollection;
+//    }
+//
+//    @XmlTransient
+//    public Collection<Piloto> getPilotoCollection() {
+//        return pilotoCollection;
+//    }
+//
+//    public void setPilotoCollection(Collection<Piloto> pilotoCollection) {
+//        this.pilotoCollection = pilotoCollection;
+//    }
 
     @Override
     public int hashCode() {
