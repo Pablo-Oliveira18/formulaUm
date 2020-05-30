@@ -9,5 +9,7 @@
       <property name="hibernate.jdbc.use_get_generated_keys">true</property>
       <property name="hibernate.current_session_context_class">thread</property>
       
+      <mapping class="br.com.grandePremio.domain.Equipe"/>
+      
   </session-factory>
 </hibernate-configuration>
