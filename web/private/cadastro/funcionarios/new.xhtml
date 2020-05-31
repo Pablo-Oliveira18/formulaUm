@@ -3,12 +3,34 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     
     <ui:composition template="/private/template/template.xhtml">
         <ui:define name="conteudo">
-            <p:panel id="panel" header="Funcionarios" style="margin: 15px;background-color: #e80000">
-                
+            <p:panel id="panel" header="Novo funcionario" style="margin: 15px;background-color: #e80000">
+                <div class="ui-g">
+                    <div class="ui-g-12" style="color: #d1d1d1">
+                        <label> Nome: </label>
+                        <p:inputText id="nome" value="#{teste}" style="width: 43%;" required="true" requiredMessage="Nome é obrigatório!"/>
+                        <label> Função: </label>
+                        <p:selectOneMenu id="funcao" value="teste" style="width: 43%"
+                                         required="true" requiredMessage="Função é obrigatória"
+                                         converter="entityConverter">
+                            <f:selectItems value="teste" var="funcao"
+                                           itemLabel="teste" itemValue="teste"/>
+                        </p:selectOneMenu>
+                        <br/>
+                        <br/>
+                        <label> Equipe: </label>
+                        <p:selectOneMenu id="equipe" value="teste" style="width: 41%"
+                                         required="true" requiredMessage="Equipe é obrigatória"
+                                         converter="entityConverter">
+                            <f:selectItems value="teste" var="equipe"
+                                           itemLabel="teste" itemValue="teste"/>
+                        </p:selectOneMenu>
+                    </div>
+                </div>
                 <br/>
                 <br/>
                 <div align="center">

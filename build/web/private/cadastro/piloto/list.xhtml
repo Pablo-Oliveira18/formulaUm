@@ -19,14 +19,27 @@
                     <p:column headerText="Pontos" width="150" style="text-align: center">
                         #{piloto.pontos}
                     </p:column>
+<<<<<<< HEAD
                     <p:column headerText="Editar" width="70" style="text-align: center">
                         <p:commandButton action="#{pilotoMB.alterar()}" icon="ui-icon-pencil" /> 
                     </p:column>
                     <p:column headerText="Excluir" width="70" style="text-align: center">
                         <p:commandButton action="#{pilotoMB.excluir(piloto)}" icon="ui-icon-trash" 
                                          
+=======
+                    <p:column headerText="Editar">
+                        <div align="center">
+                            <p:commandButton action="teste" icon="ui-icon-pencil" value="Editar"/> 
+                        </div> 
+                    </p:column>
+                    <p:column headerText="Excluir">
+                        <div align="center">
+                            <p:commandButton action="teste" icon="ui-icon-trash" 
+                                         value="Excluir"
+>>>>>>> 73f0d86a069ba915bfa55ac25b501e45e3c0e512
                                          onclick="if (!confirm('Confirma a exclusão?')) return false" 
                                          update=":form:growl"/>
+                        </div> 
                     </p:column>
                 </p:dataTable>
                 <br/>

@@ -7,14 +7,14 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="/private/template/template.xhtml">
         <ui:define name="conteudo">
-            <p:panel id="panel" header="Equipes" style="margin: 15px;background-color: #e80000">
+            <p:panel id="panel" header="Novo piloto" style="margin: 15px;background-color: #e80000">
                 <div class="ui-g">
                     <div class="ui-g-12" style="color: #d1d1d1">
                         <label> Nome: </label>
                         <p:inputText id="nome"  style="width: 43%;" value="teste"
                                      required="true" requiredMessage="Nome é obrigatório!"/>
                         <label> Equipe: </label>
-                        <p:selectOneMenu id="funcao" value="teste" style="width: 43%"
+                        <p:selectOneMenu id="equipe" value="teste" style="width: 43%"
                                          required="true" requiredMessage="Equipe é obrigatória"
                                          converter="entityConverter">
                             <f:selectItems value="teste" var="equipe"
