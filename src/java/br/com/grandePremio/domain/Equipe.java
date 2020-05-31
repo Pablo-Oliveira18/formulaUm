@@ -14,7 +14,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 
-
 @Entity
 @Table(name = "equipe")
 
@@ -28,10 +27,14 @@ public class Equipe implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "nome")
     private String nome;
+    
     //@OneToMany(cascade = CascadeType.ALL, mappedBy = "idEquipe")
     //private Collection<Funcionarios> funcionariosCollection;
-    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "idEquipe")
-    //private Collection<Piloto> pilotoCollection;
+    
+    @OneToMany(mappedBy = "id")
+    private List<Piloto> pilotos;
+
+
 
     public Equipe() {
     }
@@ -60,6 +63,19 @@ public class Equipe implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public List<Piloto> getPilotos() {
+        return pilotos;
+    }
+
+    public void setPilotos(List<Piloto> pilotos) {
+        this.pilotos = pilotos;
+    }
+
+    
+    
+    
+    
 
 //    @XmlTransient;
 //    public Collection<Funcionarios> getFuncionariosCollection() {

@@ -1,54 +1,42 @@
 package br.com.grandePremio.domain;
 
 import java.io.Serializable;
-import java.util.Collection;
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 
 @Entity
 @Table(name = "piloto")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Piloto.findAll", query = "SELECT p FROM Piloto p")
-    , @NamedQuery(name = "Piloto.findById", query = "SELECT p FROM Piloto p WHERE p.id = :id")
-    , @NamedQuery(name = "Piloto.findByNome", query = "SELECT p FROM Piloto p WHERE p.nome = :nome")
-    , @NamedQuery(name = "Piloto.findByPontos", query = "SELECT p FROM Piloto p WHERE p.pontos = :pontos")})
+
 public class Piloto implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Especifica do MY SQL, dizendo que o ID é grado automaticamente...
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "nome")
     private String nome;
-    @Basic(optional = false)
     @NotNull
     @Column(name = "pontos")
     private double pontos;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPiloto")
-    private Collection<Resultado> resultadoCollection;
+    
+    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "idPiloto")
+    //private Collection<Resultado> resultadoCollection;
+    
+    
+    @ManyToOne // tenho um uúnico serviço para varias categorias
     @JoinColumn(name = "idEquipe", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Equipe idEquipe;
+    private Equipe equipe;
 
     public Piloto() {
     }
@@ -87,46 +75,15 @@ public class Piloto implements Serializable {
         this.pontos = pontos;
     }
 
-    @XmlTransient
-    public Collection<Resultado> getResultadoCollection() {
-        return resultadoCollection;
+    public Equipe getEquipe() {
+        return equipe;
     }
 
-    public void setResultadoCollection(Collection<Resultado> resultadoCollection) {
-        this.resultadoCollection = resultadoCollection;
+    public void setEquipe(Equipe equipe) {
+        this.equipe = equipe;
     }
 
-    public Equipe getIdEquipe() {
-        return idEquipe;
-    }
-
-    public void setIdEquipe(Equipe idEquipe) {
-        this.idEquipe = idEquipe;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Piloto)) {
-            return false;
-        }
-        Piloto other = (Piloto) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "br.com.grandePremio.domain.Piloto[ id=" + id + " ]";
-    }
+   
+    
     
 }
