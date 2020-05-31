@@ -27,7 +27,6 @@ public class PilotoController {
 
     public String novo() {
         piloto = new Piloto();
-        System.out.println(piloto.getId() + piloto.getNome());
         return "new.xhtml?faces-redirect=true";
     }
 
