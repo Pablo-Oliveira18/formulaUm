@@ -21,26 +21,20 @@ import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name = "cargos")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Cargos.findAll", query = "SELECT c FROM Cargos c")
-    , @NamedQuery(name = "Cargos.findById", query = "SELECT c FROM Cargos c WHERE c.id = :id")
-    , @NamedQuery(name = "Cargos.findByFuncao", query = "SELECT c FROM Cargos c WHERE c.funcao = :funcao")})
+
 public class Cargos implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "funcao")
     private String funcao;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCargo")
-    private Collection<Funcionarios> funcionariosCollection;
+    
+    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "idCargo")
+    //private Collection<Funcionarios> funcionariosCollection;
 
     public Cargos() {
     }
@@ -70,14 +64,6 @@ public class Cargos implements Serializable {
         this.funcao = funcao;
     }
 
-    @XmlTransient
-    public Collection<Funcionarios> getFuncionariosCollection() {
-        return funcionariosCollection;
-    }
-
-    public void setFuncionariosCollection(Collection<Funcionarios> funcionariosCollection) {
-        this.funcionariosCollection = funcionariosCollection;
-    }
 
     @Override
     public int hashCode() {
