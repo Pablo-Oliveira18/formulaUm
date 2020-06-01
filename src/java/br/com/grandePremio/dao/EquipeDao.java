@@ -11,7 +11,7 @@ public class EquipeDao {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try {
-            List<Equipe> equipes = session.createQuery("from Equipe order by nome").list();
+            List<Equipe> equipes = session.createQuery("from Equipe").list();
             session.getTransaction().commit();
             return equipes;
         } catch (Exception e) {
