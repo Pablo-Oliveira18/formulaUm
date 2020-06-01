@@ -2,7 +2,7 @@ package br.com.grandePremio.domain;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,8 +28,8 @@ public class Equipe implements Serializable {
     @Column(name = "nome")
     private String nome;
     
-    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "idEquipe")
-    //private Collection<Funcionarios> funcionariosCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
+    private List<Funcionario> funcionarios;
     
     @OneToMany(mappedBy = "id")
     private List<Piloto> pilotos;
@@ -70,6 +70,14 @@ public class Equipe implements Serializable {
 
     public void setPilotos(List<Piloto> pilotos) {
         this.pilotos = pilotos;
+    }
+
+    public List<Funcionario> getFuncionarios() {
+        return funcionarios;
+    }
+
+    public void setFuncionarios(List<Funcionario> funcionarios) {
+        this.funcionarios = funcionarios;
     }
 
     
