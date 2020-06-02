@@ -7,34 +7,31 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="/private/template/template.xhtml">
         <ui:define name="conteudo">
+            
             <p:panel id="panel" header="Pilotos" style="margin: 15px;background-color: #e80000">
-                <p:dataTable value="" var="pilotos" emptyMessage="Nenhum piloto cadastrado" style="background-color: #363535">
-                    <p:column headerText="Nome">
-                        
+                <p:dataTable value="#{pilotoMB.pilotos}" var="piloto" emptyMessage="Nenhum piloto cadastrado" style="background-color: #363535">
+                    
+                    <p:column headerText="Nome" sortBy="#{piloto.nome}" style="font-weight: bold; color: black">
+                        #{piloto.nome}
                     </p:column>
                     <p:column headerText="Equipe">
-                        
+                        #{piloto.equipe.nome}
                     </p:column>
-                    <p:column headerText="Pontos">
-                        
+                    <p:column headerText="Pontos" width="150" style="text-align: center">
+                        #{piloto.pontos}
                     </p:column>
-                    <p:column headerText="Editar">
-                        <div align="center">
-                            <p:commandButton action="teste" icon="ui-icon-pencil" value="Editar"/> 
-                        </div> 
+
+                    <p:column headerText="Editar" width="70" style="text-align: center">
+                        <p:commandButton action="#{pilotoMB.buscaDados(piloto)}" icon="ui-icon-pencil" /> 
                     </p:column>
-                    <p:column headerText="Excluir">
-                        <div align="center">
-                            <p:commandButton action="teste" icon="ui-icon-trash" 
-                                         value="Excluir"
-                                         onclick="if (!confirm('Confirma a exclusão?')) return false" 
-                                         update=":form:growl"/>
-                        </div> 
-                    </p:column>
+                    <p:column headerText="Excluir" width="70" style="text-align: center">
+                        <p:commandButton action="#{pilotoMB.excluir(piloto)}" icon="ui-icon-trash" />
+                    </p:column>                 
+                    
                 </p:dataTable>
                 <br/>
                 <br/>
-                <p:commandButton id="novo" action="teste" value="Novo" icon="ui-icon-plusthick"/>
+                <p:commandButton id="novo" action="#{pilotoMB.novo()}" value="Novo" icon="ui-icon-plusthick"/>
             </p:panel>
         </ui:define>
     </ui:composition>

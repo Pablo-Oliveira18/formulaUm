@@ -1,19 +1,20 @@
 package br.com.grandePremio.dao;
 
-import br.com.grandePremio.domain.Equipe;
+import br.com.grandePremio.domain.Piloto;
 import br.com.grandePremio.util.HibernateUtil;
 import java.util.List;
 import org.hibernate.Session;
 
 
-public class EquipeDao {
-    public List<Equipe> listar() {
+public class PilotoDao {
+    
+    public List<Piloto> listar() {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try {
-            List<Equipe> equipes = session.createQuery("from Equipe").list();
+            List<Piloto> pilotos = session.createQuery("from Piloto").list();
             session.getTransaction().commit();
-            return equipes;
+            return pilotos;
         } catch (Exception e) {
             e.printStackTrace();
             session.getTransaction().rollback();
@@ -21,13 +22,13 @@ public class EquipeDao {
         }
     }
 
-    public Equipe consulta(Integer id) {
+    public Piloto consulta(Integer id) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try {
-            Equipe equipe = (Equipe) session.createQuery("from Equipe where id = " + id).uniqueResult(); // uniqueResult retorna apenas 1 resultado
+            Piloto piloto = (Piloto) session.createQuery("from Piloto where id = " + id).uniqueResult(); // uniqueResult retorna apenas 1 resultado
             session.getTransaction().commit();
-            return equipe;
+            return piloto;
         } catch (Exception e) {
             e.printStackTrace();
             session.getTransaction().rollback();
@@ -35,11 +36,11 @@ public class EquipeDao {
         }
     }
 
-    public boolean inserir(Equipe equipe) {
+    public boolean inserir(Piloto piloto) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try {
-            session.save(equipe);
+            session.save(piloto);
             session.getTransaction().commit();
             return true;
         } catch (Exception e) {
@@ -50,11 +51,11 @@ public class EquipeDao {
 
     }
 
-    public boolean excluir(Equipe equipe) {
+    public boolean excluir(Piloto piloto) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try {
-            session.delete(equipe);
+            session.delete(piloto);
             session.getTransaction().commit();
             return true;
         } catch (Exception e) {
@@ -65,11 +66,11 @@ public class EquipeDao {
 
     }
 
-    public boolean alterar(Equipe equipe) {
+    public boolean alterar(Piloto piloto) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try {
-            session.update(equipe);
+            session.update(piloto);
             session.getTransaction().commit();
             return true;
         } catch (Exception e) {
@@ -79,4 +80,5 @@ public class EquipeDao {
         }
 
     }
+    
 }

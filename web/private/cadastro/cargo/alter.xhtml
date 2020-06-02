@@ -12,14 +12,14 @@
                 <div class="ui-g">
                     <div class="ui-g-12" style="color: #d1d1d1">
                         <label> Descrição: </label>
-                        <p:inputText id="nome" value="teste" style="width: 43%;" required="true" requiredMessage="Descrição é obrigatório!"/>
+                        <p:inputText id="nome" value="#{cargosMB.cargos.funcao}" style="width: 43%;" required="true" requiredMessage="Função é obrigatório!"/>
                     </div>
                 </div>
                 <br/>
                 <br/>
                 <div align="center">
-                    <p:commandButton id="alterar" action="teste" value="Alterar" icon="ui-icon-transferthick-e-w" update="growl"/>
-                    <p:commandButton id="cancelar" action="teste" value="Cancelar" icon="ui-icon-closethick" immediate="true"/>
+                    <p:commandButton id="alterar" action="#{cargosMB.alterar()}" value="Alterar" icon="ui-icon-transferthick-e-w" update="growl"/>
+                    <p:commandButton id="cancelar" action="#{cargosMB.cancelar()}" value="Cancelar" icon="ui-icon-closethick" immediate="true"/>
                 </div>
             </p:panel>
         </ui:define>

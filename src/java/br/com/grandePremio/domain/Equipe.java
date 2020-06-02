@@ -2,7 +2,7 @@ package br.com.grandePremio.domain;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +12,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
 
 
 @Entity
@@ -28,10 +27,14 @@ public class Equipe implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "nome")
     private String nome;
-    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "idEquipe")
-    //private Collection<Funcionarios> funcionariosCollection;
-    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "idEquipe")
-    //private Collection<Piloto> pilotoCollection;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
+    private List<Funcionario> funcionarios;
+    
+    @OneToMany(mappedBy = "id")
+    private List<Piloto> pilotos;
+
+
 
     public Equipe() {
     }
@@ -60,6 +63,27 @@ public class Equipe implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public List<Piloto> getPilotos() {
+        return pilotos;
+    }
+
+    public void setPilotos(List<Piloto> pilotos) {
+        this.pilotos = pilotos;
+    }
+
+    public List<Funcionario> getFuncionarios() {
+        return funcionarios;
+    }
+
+    public void setFuncionarios(List<Funcionario> funcionarios) {
+        this.funcionarios = funcionarios;
+    }
+
+    
+    
+    
+    
 
 //    @XmlTransient;
 //    public Collection<Funcionarios> getFuncionariosCollection() {

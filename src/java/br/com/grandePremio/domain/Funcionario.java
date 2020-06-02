@@ -19,17 +19,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name = "funcionarios")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Funcionarios.findAll", query = "SELECT f FROM Funcionarios f")
-    , @NamedQuery(name = "Funcionarios.findById", query = "SELECT f FROM Funcionarios f WHERE f.id = :id")
-    , @NamedQuery(name = "Funcionarios.findByNome", query = "SELECT f FROM Funcionarios f WHERE f.nome = :nome")})
-public class Funcionarios implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+
+public class Funcionario implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
@@ -39,19 +34,19 @@ public class Funcionarios implements Serializable {
     private String nome;
     @JoinColumn(name = "idCargo", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Cargos idCargo;
-    @JoinColumn(name = "idEquipe", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Equipe idEquipe;
+    private Cargos cargo;
+//    @JoinColumn(name = "idEquipe", referencedColumnName = "id")
+//    @ManyToOne(optional = false)
+//    private Equipe equipe;
 
-    public Funcionarios() {
+    public Funcionario() {
     }
 
-    public Funcionarios(Integer id) {
+    public Funcionario(Integer id) {
         this.id = id;
     }
 
-    public Funcionarios(Integer id, String nome) {
+    public Funcionario(Integer id, String nome) {
         this.id = id;
         this.nome = nome;
     }
@@ -72,21 +67,21 @@ public class Funcionarios implements Serializable {
         this.nome = nome;
     }
 
-    public Cargos getIdCargo() {
-        return idCargo;
-    }
-
-    public void setIdCargo(Cargos idCargo) {
-        this.idCargo = idCargo;
-    }
-
-    public Equipe getIdEquipe() {
-        return idEquipe;
-    }
-
-    public void setIdEquipe(Equipe idEquipe) {
-        this.idEquipe = idEquipe;
-    }
+//    public Cargos getIdCargo() {
+//        return idCargo;
+//    }
+//
+//    public void setIdCargo(Cargos idCargo) {
+//        this.idCargo = idCargo;
+//    }
+//
+//    public Equipe getIdEquipe() {
+//        return idEquipe;
+//    }
+//
+//    public void setIdEquipe(Equipe idEquipe) {
+//        this.idEquipe = idEquipe;
+//    }
 
     @Override
     public int hashCode() {
@@ -98,10 +93,10 @@ public class Funcionarios implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Funcionarios)) {
+        if (!(object instanceof Funcionario)) {
             return false;
         }
-        Funcionarios other = (Funcionarios) object;
+        Funcionario other = (Funcionario) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

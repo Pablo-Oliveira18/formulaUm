@@ -10,6 +10,9 @@
       <property name="hibernate.current_session_context_class">thread</property>
       
       <mapping class="br.com.grandePremio.domain.Equipe"/>
+      <mapping class="br.com.grandePremio.domain.Piloto"/>
+      <mapping class="br.com.grandePremio.domain.Cargos"/>
+      <mapping class="br.com.grandePremio.domain.Funcionario"/>
       
   </session-factory>
 </hibernate-configuration>

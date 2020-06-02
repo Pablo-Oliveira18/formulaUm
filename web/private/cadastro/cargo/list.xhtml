@@ -7,21 +7,20 @@
     <ui:composition template="/private/template/template.xhtml">
         <ui:define name="conteudo">
             <p:panel id="panel" header="Funções" style="margin: 15px;background-color: #e80000">
-                <p:dataTable id="dataTable" value="" var="cargo" emptyMessage="Nenhum cargo cadastrado" style="background-color: #363535">
+                <p:dataTable id="dataTable" value="#{cargosMB.cargoss}" var="cargo" emptyMessage="Nenhum cargo cadastrado" style="background-color: #363535">
                    
-                    <p:column headerText="Descrição">
-                        
+                    <p:column headerText="Função" sortBy="#{cargo.funcao}">
+                        #{cargo.funcao}
                     </p:column>
                     
-                    <p:column headerText="Editar">
+                    <p:column headerText="Editar" width="90">
                         <div align="center">
-                            <p:commandButton action="teste" icon="ui-icon-pencil" value="Editar"/>
+                            <p:commandButton action="#{cargosMB.buscaDados(cargo)}" icon="ui-icon-pencil"/>
                         </div>             
                     </p:column>
-                    <p:column headerText="Excluir">
+                    <p:column headerText="Excluir" width="90">
                         <div align="center">
-                            <p:commandButton action="teste" icon="ui-icon-trash" 
-                                         value="Excluir"
+                            <p:commandButton action="#{cargosMB.excluir(cargo)}" icon="ui-icon-trash" 
                                          onclick="if (!confirm('Confirma a exclusão?')) return false" 
                                          update=":form:growl"/>
                         </div>
@@ -29,7 +28,7 @@
                 </p:dataTable>
                 <br/>
                 <br/>
-                <p:commandButton id="novo" value="Novo" action="teste" icon="ui-icon-plusthick"/>
+                <p:commandButton id="novo" value="Novo" action="#{cargosMB.novo()}" icon="ui-icon-plusthick"/>
             </p:panel>
         </ui:define>
     </ui:composition>
