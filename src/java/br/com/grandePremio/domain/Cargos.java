@@ -38,6 +38,16 @@ public class Cargos implements Serializable {
         this.id = id;
     }
 
+    public List<Funcionario> getFuncionarios() {
+        return funcionarios;
+    }
+
+    public void setFuncionarios(List<Funcionario> funcionarios) {
+        this.funcionarios = funcionarios;
+    }
+    
+    
+
     public Cargos(Integer id, String funcao) {
         this.id = id;
         this.funcao = funcao;

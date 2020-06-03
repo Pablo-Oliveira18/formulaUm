@@ -94,5 +94,6 @@ public class FuncionarioController implements Serializable {
     public void setFuncionarios(List<Funcionario> funcionarios) {
         this.funcionarios = funcionarios;
     }
+    
 
 }

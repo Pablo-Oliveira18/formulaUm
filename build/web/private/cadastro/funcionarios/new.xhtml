@@ -12,30 +12,30 @@
                 <div class="ui-g">
                     <div class="ui-g-12" style="color: #d1d1d1">
                         <label> Nome: </label>
-                        <p:inputText id="nome" value="#{teste}" style="width: 43%;" required="true" requiredMessage="Nome é obrigatório!"/>
+                        <p:inputText id="nome" value="#{funcionarioMB.funcionario.nome}" style="width: 43%;" required="true" requiredMessage="Nome é obrigatório!"/>
                         <label> Função: </label>
-                        <p:selectOneMenu id="funcao" value="teste" style="width: 43%"
+                        <p:selectOneMenu id="funcao" value="#{funcionarioMB.funcionario.cargo}" style="width: 43%"
                                          required="true" requiredMessage="Função é obrigatória"
                                          converter="entityConverter">
-                            <f:selectItems value="teste" var="funcao"
-                                           itemLabel="teste" itemValue="teste"/>
+                            <f:selectItems value="#{cargosMB.cargoss}" var="funcao"
+                                           itemLabel="#{funcao.funcao}" itemValue="#{funcao}"/>
                         </p:selectOneMenu>
                         <br/>
                         <br/>
                         <label> Equipe: </label>
-                        <p:selectOneMenu id="equipe" value="teste" style="width: 41%"
+                        <p:selectOneMenu id="equipe" value="#{funcionarioMB.funcionario.equipe}" style="width: 41%"
                                          required="true" requiredMessage="Equipe é obrigatória"
                                          converter="entityConverter">
-                            <f:selectItems value="teste" var="equipe"
-                                           itemLabel="teste" itemValue="teste"/>
+                            <f:selectItems value="#{equipeMB.equipes}" var="equipe"
+                                           itemLabel="#{equipe.nome}" itemValue="#{equipe}"/>
                         </p:selectOneMenu>
                     </div>
                 </div>
                 <br/>
                 <br/>
                 <div align="center">
-                    <p:commandButton id="salvar" action="teste" value="Salvar" icon="ui-icon-disk" update="growl"/>
-                    <p:commandButton id="cancelar" action="teste" value="Cancelar" icon="ui-icon-closethick" immediate="true"/>
+                    <p:commandButton id="salvar" action="#{funcionarioMB.salvar()}" value="Salvar" icon="ui-icon-disk" update="growl"/>
+                    <p:commandButton id="cancelar" action="#{funcionarioMB.cancelar()}" value="Cancelar" icon="ui-icon-closethick" immediate="true"/>
                 </div>
             </p:panel>
         </ui:define>
