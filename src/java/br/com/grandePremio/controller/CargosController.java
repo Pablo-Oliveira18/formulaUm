@@ -95,4 +95,5 @@ public class CargosController implements Serializable {
         this.cargoss = cargoss;
     }
 
+    
 }

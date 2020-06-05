@@ -28,7 +28,7 @@ public class Equipe implements Serializable {
     @Column(name = "nome")
     private String nome;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
+    @OneToMany(mappedBy = "id")
     private List<Funcionario> funcionarios;
     
     @OneToMany(mappedBy = "id")

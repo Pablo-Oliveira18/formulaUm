@@ -9,12 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 
 
 @Entity
@@ -35,12 +32,23 @@ public class Funcionario implements Serializable {
     @JoinColumn(name = "idCargo", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Cargos cargo;
-//    @JoinColumn(name = "idEquipe", referencedColumnName = "id")
-//    @ManyToOne(optional = false)
-//    private Equipe equipe;
+    
+    @JoinColumn(name = "idEquipe", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Equipe equipe;
 
     public Funcionario() {
     }
+
+    public Cargos getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(Cargos cargo) {
+        this.cargo = cargo;
+    }
+    
+    
 
     public Funcionario(Integer id) {
         this.id = id;
@@ -67,21 +75,15 @@ public class Funcionario implements Serializable {
         this.nome = nome;
     }
 
-//    public Cargos getIdCargo() {
-//        return idCargo;
-//    }
-//
-//    public void setIdCargo(Cargos idCargo) {
-//        this.idCargo = idCargo;
-//    }
-//
-//    public Equipe getIdEquipe() {
-//        return idEquipe;
-//    }
-//
-//    public void setIdEquipe(Equipe idEquipe) {
-//        this.idEquipe = idEquipe;
-//    }
+    public Equipe getEquipe() {
+        return equipe;
+    }
+
+    public void setEquipe(Equipe equipe) {
+        this.equipe = equipe;
+    }
+
+    
 
     @Override
     public int hashCode() {
