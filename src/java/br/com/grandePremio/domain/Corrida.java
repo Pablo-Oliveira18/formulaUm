@@ -2,6 +2,7 @@ package br.com.grandePremio.domain;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,24 +10,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 
 @Entity
 @Table(name = "corrida")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Corrida.findAll", query = "SELECT c FROM Corrida c")
-    , @NamedQuery(name = "Corrida.findById", query = "SELECT c FROM Corrida c WHERE c.id = :id")
-    , @NamedQuery(name = "Corrida.findByNome", query = "SELECT c FROM Corrida c WHERE c.nome = :nome")
-    , @NamedQuery(name = "Corrida.findByPaisOrigem", query = "SELECT c FROM Corrida c WHERE c.paisOrigem = :paisOrigem")})
+
 public class Corrida implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,7 +39,7 @@ public class Corrida implements Serializable {
     @Column(name = "paisOrigem")
     private String paisOrigem;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCorrida")
-    private Collection<Resultado> resultadoCollection;
+    private List<Resultado> resultado;
 
     public Corrida() {
     }
@@ -85,13 +78,12 @@ public class Corrida implements Serializable {
         this.paisOrigem = paisOrigem;
     }
 
-    @XmlTransient
-    public Collection<Resultado> getResultadoCollection() {
-        return resultadoCollection;
+    public List<Resultado> getResultado() {
+        return resultado;
     }
 
-    public void setResultadoCollection(Collection<Resultado> resultadoCollection) {
-        this.resultadoCollection = resultadoCollection;
+    public void setResultado(List<Resultado> resultado) {
+        this.resultado = resultado;
     }
 
     @Override
