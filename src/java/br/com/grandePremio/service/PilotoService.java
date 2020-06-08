@@ -1,6 +1,7 @@
 package br.com.grandePremio.service;
 
 import br.com.grandePremio.dao.PilotoDao;
+import br.com.grandePremio.domain.Gp;
 import br.com.grandePremio.domain.Piloto;
 import java.util.List;
 
@@ -27,6 +28,20 @@ public class PilotoService {
 
     public boolean excluir(Piloto piloto) {
         return pilotoDao.excluir(piloto);
+    }
+    
+    
+    public void lancaGp(List<Gp> lista) {
+        Integer pt = 0;
+        Piloto piloto = null;
+        for (Gp gp : lista) {
+            piloto = pilotoDao.consulta(gp.getPiloto().getId());
+            if (piloto != null) {
+                gp.getPiloto().setPontos(gp.getPontuacao() + piloto.getPontos());
+            }
+
+            pilotoDao.alterar(gp.getPiloto());
+        }
     }
     
 }

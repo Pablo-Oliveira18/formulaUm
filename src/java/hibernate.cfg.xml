@@ -14,6 +14,7 @@
       <mapping class="br.com.grandePremio.domain.Cargos"/>
       <mapping class="br.com.grandePremio.domain.Funcionario"/>
       <mapping class="br.com.grandePremio.domain.Corrida"/>
+      <mapping class="br.com.grandePremio.domain.Resultado"/>
       
   </session-factory>
 </hibernate-configuration>

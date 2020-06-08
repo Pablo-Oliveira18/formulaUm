@@ -12,7 +12,7 @@ public class PilotoDao {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try {
-            List<Piloto> pilotos = session.createQuery("from Piloto").list();
+            List<Piloto> pilotos = session.createQuery("from Piloto order by nome").list();
             session.getTransaction().commit();
             return pilotos;
         } catch (Exception e) {

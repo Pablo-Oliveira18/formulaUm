@@ -8,24 +8,24 @@
     <ui:composition template="/private/template/template.xhtml">
         <ui:define name="conteudo">
             <p:panel id="panel" header="Corridas" style="margin: 15px;background-color: #e80000">
-                <p:dataTable id="dataTable" value="teste" var="equipe" emptyMessage="Nenhuma corrida cadastrada" style="background-color: #363535">
+                <p:dataTable id="dataTable" value="#{corridaMB.corridas}" var="corrida" emptyMessage="Nenhuma corrida cadastrada" style="background-color: #363535">
                    
                     <p:column headerText="Nome">
-                        
+                        #{corrida.nome}
                     </p:column>
                     
                     <p:column headerText="País de Origem">
-                        
+                        #{corrida.paisOrigem}
                     </p:column>
                     
                     <p:column headerText="Editar" width="90">
                         <div align="center">
-                            <p:commandButton action="teste" icon="ui-icon-pencil"/>
+                            <p:commandButton action="#{corridaMB.buscaDados(corrida)}" icon="ui-icon-pencil"/>
                         </div>             
                     </p:column>
                     <p:column headerText="Excluir" width="90">
                         <div align="center">
-                            <p:commandButton action="teste" icon="ui-icon-trash" 
+                            <p:commandButton action="#{corridaMB.excluir(corrida)}" icon="ui-icon-trash" 
                                          onclick="if (!confirm('Confirma a exclusão?')) return false" 
                                          update=":form:growl"/>
                         </div>
@@ -33,7 +33,7 @@
                 </p:dataTable>
                 <br/>
                 <br/>
-                <p:commandButton id="novo" value="Novo" action="teste" icon="ui-icon-plusthick"/>
+                <p:commandButton id="novo" value="Novo" action="#{corridaMB.novo()}" icon="ui-icon-plusthick"/>
             </p:panel>
         </ui:define>
     </ui:composition>

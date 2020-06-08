@@ -11,11 +11,12 @@
                 <div class="ui-g">
                     <div class="ui-g-12" style="color: #d1d1d1">
                         <label> Nome: </label>
-                        <p:inputText id="nome" value="teste" style="width: 43%;" required="true" requiredMessage="Nome é obrigatório!"/>
+                        <p:inputText id="nome" value="#{corridaMB.corrida.nome}" style="width: 43%;" required="true" requiredMessage="Nome é obrigatório!"/>
                         <label> País: </label>
-                        <p:inputText id="pais" value="teste" style="width: 43%;" required="true" requiredMessage="País é obrigatório!"/>
+                        <p:inputText id="pais" value="#{corridaMB.corrida.paisOrigem}" style="width: 43%;" required="true" requiredMessage="País é obrigatório!"/>
                         <br/>
                         <br/>
+                        
                         <p:dataTable id="dataTable" value="teste" var="posicao" style="background-color: #363535">
                             <p:column headerText="Nome do piloto">
                                 

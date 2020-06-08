@@ -18,7 +18,8 @@ public class PilotoController {
     private PilotoService pilotoService = new PilotoService();
 
     public PilotoController() {
-        listar();
+        this.listar();
+        System.out.println("Listou");
     }
 
     public void listar() {
@@ -35,7 +36,6 @@ public class PilotoController {
     }
 
     public String salvar() {
-        System.out.println("AQ ESAT" + piloto.getNome());
         if (pilotoService.inserir(piloto)) {
             UtilMensagens.mensagemSucesso("Sucesso", "Piloto salva com sucesso !");
             this.listar();

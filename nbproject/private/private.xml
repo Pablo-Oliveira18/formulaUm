@@ -3,10 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/tylui/OneDrive/Área%20de%20Trabalho/Facul/7%20periodo/Topicos%20Especiais%201/formulaUm/web/private/cadastro/grandePremio/alter.xhtml</file>
-            <file>file:/C:/Users/tylui/OneDrive/Área%20de%20Trabalho/Facul/7%20periodo/Topicos%20Especiais%201/formulaUm/web/private/cadastro/equipe/alter.xhtml</file>
-            <file>file:/C:/Users/tylui/OneDrive/Área%20de%20Trabalho/Facul/7%20periodo/Topicos%20Especiais%201/formulaUm/web/private/template/menu.xhtml</file>
-            <file>file:/C:/Users/tylui/OneDrive/Área%20de%20Trabalho/Facul/7%20periodo/Topicos%20Especiais%201/formulaUm/web/private/cadastro/grandePremio/new.xhtml</file>
+            <file>file:/C:/Users/Pablo/Dropbox/Faculdade/7Periodo/TopicosEspeciais/ProjetoFormulaUm/src/java/br/com/grandePremio/domain/Corrida.java</file>
+            <file>file:/C:/Users/Pablo/Dropbox/Faculdade/7Periodo/TopicosEspeciais/ProjetoFormulaUm/src/java/hibernate.cfg.xml</file>
+            <file>file:/C:/Users/Pablo/Dropbox/Faculdade/7Periodo/TopicosEspeciais/ProjetoFormulaUm/web/private/cadastro/grandePremio/list.xhtml</file>
+            <file>file:/C:/Users/Pablo/Dropbox/Faculdade/7Periodo/TopicosEspeciais/ProjetoFormulaUm/src/java/br/com/grandePremio/controller/CorridaController.java</file>
+            <file>file:/C:/Users/Pablo/Dropbox/Faculdade/7Periodo/TopicosEspeciais/ProjetoFormulaUm/src/java/br/com/grandePremio/controller/EquipeController.java</file>
+            <file>file:/C:/Users/Pablo/Dropbox/Faculdade/7Periodo/TopicosEspeciais/ProjetoFormulaUm/src/java/br/com/grandePremio/dao/CorridaDao.java</file>
         </group>
     </open-files>
 </project-private>

@@ -38,6 +38,7 @@ public class Corrida implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "paisOrigem")
     private String paisOrigem;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCorrida")
     private List<Resultado> resultado;
 

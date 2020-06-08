@@ -28,6 +28,7 @@ public class Resultado implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
+    
     private Integer id;
     @JoinColumn(name = "idCorrida", referencedColumnName = "id")
     @ManyToOne(optional = false)
