@@ -32,6 +32,8 @@
                             <p:ajax event="change"/>
                         </p:selectOneMenu>
                     </div>
+                    
+                    
 
                     <div class="ui-g-2" style="color: blue;">
 
@@ -45,7 +47,7 @@
                     <div class="ui-g-12">
                         <p:dataTable id="itensCorrida" value="#{corridaMB.itensCorrida}" var="item"
                                      emptyMessage="Nenhum piloto adicionado">
-                            <p:column headerText="Piloto" sortBy="#{item.servico.descricao}">
+                            <p:column headerText="Piloto" sortBy="#{item.piloto.nome}">
                                 #{item.piloto.nome}
                             </p:column>
                             <p:column headerText="Pontos" width="200" style="text-align: center;">

@@ -1,8 +1,10 @@
 package br.com.grandePremio.controller;
 
 import br.com.grandePremio.domain.Corrida;
+import br.com.grandePremio.domain.Piloto;
 import br.com.grandePremio.domain.Resultado;
 import br.com.grandePremio.service.CorridaService;
+import br.com.grandePremio.service.PilotoService;
 import br.com.grandePremio.util.UtilMensagens;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -15,6 +17,10 @@ import javax.faces.bean.SessionScoped;
 
 public class CorridaController implements Serializable {
 
+    
+    private PilotoService pilotoService = new PilotoService();
+    private Piloto piloto;
+    
     private Corrida corrida = new Corrida();
     private List<Corrida> corridas;
     private CorridaService corridaService = new CorridaService();
@@ -81,7 +87,7 @@ public class CorridaController implements Serializable {
 
     public void addPiloto() {
         if (itemCorrida.getPiloto() == null) {
-            UtilMensagens.mensagemErro("Erro", "Informe o serviço e a quantidade");
+            UtilMensagens.mensagemErro("Erro", "Informe o piloto");
         } else {
             itensCorrida.add(itemCorrida);
             itemCorrida = new Resultado();
@@ -90,6 +96,12 @@ public class CorridaController implements Serializable {
     
     public void removeCorrida (Resultado itemCorrida) {
         itensCorrida.remove(itemCorrida);
+    }
+    
+    public void calculaTotal(){
+        if(pilotoService.alterar(itemCorrida.getPiloto())){
+            UtilMensagens.mensagemSucesso("Sucesso", "Corrida alterada com sucesso !");
+        }
     }
     
     public Corrida getCorrida() {

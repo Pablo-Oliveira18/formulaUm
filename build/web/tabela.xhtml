@@ -11,7 +11,7 @@
             
 
             <p:panel id="panel" header="Tabela de pontos" style="margin: 15px;background-color: #e80000">
-                <p:dataTable value="" var="tabela" emptyMessage="Nenhum GP realizado">
+                <p:dataTable value="#{corridaMB.itensCorrida}" var="piloto" emptyMessage="Nenhum GP realizado">
                     <p:column headerText="Posição">
                         
                     </p:column>
@@ -19,10 +19,11 @@
                         
                     </p:column>
                     <p:column headerText="Equipe">
-                        
                     </p:column>
                     <p:column headerText="Pontos">
-                        
+                    </p:column>
+                    
+                    <p:column headerText="Corrida">
                     </p:column>
                 </p:dataTable> 
             </p:panel>
