@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     
     <ui:composition template="/private/template/template.xhtml">
         <ui:define name="conteudo">
@@ -16,25 +17,56 @@
                         <p:inputText id="pais" value="#{corridaMB.corrida.paisOrigem}" style="width: 43%;" required="true" requiredMessage="País é obrigatório!"/>
                         <br/>
                         <br/>
-                        
-                        <p:dataTable id="dataTable" value="teste" var="posicao" style="background-color: #363535">
-                            <p:column headerText="Nome do piloto">
-                                
+                    </div>
+                </div>
+                
+                <br/>
+                <div class="ui-g">
+                    <div class="ui-g-8">
+                        <label>Pilotos</label><br/>
+                        <p:selectOneMenu id="piloto" value="#{corridaMB.itemCorrida.piloto}" style="width: 95%"
+                                         converter="entityConverter">
+                            <f:selectItem itemLabel="-- Selecione um Piloto --" noSelectionOption="true"/>
+                            <f:selectItems value="#{pilotoMB.pilotos}" var="piloto"
+                                           itemLabel="#{piloto.nome}" itemValue="#{piloto}"/>
+                            <p:ajax event="change"/>
+                        </p:selectOneMenu>
+                    </div>
+
+                    <div class="ui-g-2" style="color: blue;">
+
+                        <p:commandButton id="adicio" action="#{corridaMB.addPiloto()}" value="Adicionar" 
+                                         icon="ui-icon-plus" update="itensCorrida, piloto, growl"/>
+                    </div>
+                    
+                </div>
+
+                <div class="ui-g">
+                    <div class="ui-g-12">
+                        <p:dataTable id="itensCorrida" value="#{corridaMB.itensCorrida}" var="item"
+                                     emptyMessage="Nenhum piloto adicionado">
+                            <p:column headerText="Piloto" sortBy="#{item.servico.descricao}">
+                                #{item.piloto.nome}
                             </p:column>
-                            <p:column headerText="Equipe">
-                                
+                            <p:column headerText="Pontos" width="200" style="text-align: center;">
+                                <h:outputText value="#{item.piloto.pontos}">
+                                    <f:convertNumber minFractionDigits="2"/>
+                                </h:outputText>
                             </p:column>
-                            <p:column headerText="Posição">
-                                
+
+                            <p:column headerText="Excluir" width="80" style="text-align: center;">
+                                <p:commandButton id="excluir" action="#{corridaMB.removeCorrida(item)}" icon="ui-icon-trash"
+                                                 update="itensCorrida" immediate="true"/>
                             </p:column>
                         </p:dataTable>
                     </div>
                 </div>
+
                 <br/>
                 <br/>
                 <div align="center">
-                    <p:commandButton id="salvar" action="teste" value="Salvar" icon="ui-icon-disk" update="growl"/>
-                    <p:commandButton id="cancelar" action="teste" value="Cancelar" icon="ui-icon-closethick" immediate="true"/>
+                    <p:commandButton id="salvar" action="#{corridaMB.salvar()}" value="Salvar" icon="ui-icon-disk" update="growl"/>
+                    <p:commandButton id="cancelar" action="#{corridaMB.cancelar()}" value="Cancelar" icon="ui-icon-closethick" immediate="true"/>
                 </div>
             </p:panel>
         </ui:define>

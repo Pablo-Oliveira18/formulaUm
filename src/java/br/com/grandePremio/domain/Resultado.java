@@ -3,6 +3,7 @@ package br.com.grandePremio.domain;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,80 +18,43 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name = "resultado")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Resultado.findAll", query = "SELECT r FROM Resultado r")
-    , @NamedQuery(name = "Resultado.findById", query = "SELECT r FROM Resultado r WHERE r.id = :id")})
+
 public class Resultado implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
+    @EmbeddedId
+    private PilotosCorridaPk pilotosCorridaPk = new PilotosCorridaPk();
     
-    private Integer id;
-    @JoinColumn(name = "idCorrida", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Corrida idCorrida;
     @JoinColumn(name = "idPiloto", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Piloto idPiloto;
+    private Piloto piloto;
 
     public Resultado() {
     }
 
-    public Resultado(Integer id) {
-        this.id = id;
+    public Resultado(Piloto piloto, Integer sequencia, Corrida corrida) {
+        this.piloto = piloto;
+        this.pilotosCorridaPk.setCorrida(corrida);
+        this.pilotosCorridaPk.setSequencia(sequencia);
     }
 
-    public Integer getId() {
-        return id;
+    public PilotosCorridaPk getPilotosCorridaPk() {
+        return pilotosCorridaPk;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setPilotosCorridaPk(PilotosCorridaPk pilotosCorridaPk) {
+        this.pilotosCorridaPk = pilotosCorridaPk;
     }
 
-    public Corrida getIdCorrida() {
-        return idCorrida;
+    public Piloto getPiloto() {
+        return piloto;
     }
 
-    public void setIdCorrida(Corrida idCorrida) {
-        this.idCorrida = idCorrida;
-    }
-
-    public Piloto getIdPiloto() {
-        return idPiloto;
-    }
-
-    public void setIdPiloto(Piloto idPiloto) {
-        this.idPiloto = idPiloto;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Resultado)) {
-            return false;
-        }
-        Resultado other = (Resultado) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "br.com.grandePremio.domain.Resultado[ id=" + id + " ]";
+    public void setPiloto(Piloto piloto) {
+        this.piloto = piloto;
     }
     
+    
+    
+    
+
 }

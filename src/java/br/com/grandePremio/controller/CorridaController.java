@@ -1,9 +1,11 @@
 package br.com.grandePremio.controller;
 
 import br.com.grandePremio.domain.Corrida;
+import br.com.grandePremio.domain.Resultado;
 import br.com.grandePremio.service.CorridaService;
 import br.com.grandePremio.util.UtilMensagens;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -16,6 +18,9 @@ public class CorridaController implements Serializable {
     private Corrida corrida = new Corrida();
     private List<Corrida> corridas;
     private CorridaService corridaService = new CorridaService();
+    
+    private List<Resultado> itensCorrida;
+    private Resultado itemCorrida;
 
     public CorridaController() {
         listar();
@@ -27,7 +32,8 @@ public class CorridaController implements Serializable {
 
     public String novo() {
         corrida = new Corrida();
-        System.out.println(corrida.getId() + corrida.getNome());
+        itensCorrida = new ArrayList<>();
+        itemCorrida = new Resultado();
         return "new.xhtml?faces-redirect=true";
     }
 
@@ -36,8 +42,7 @@ public class CorridaController implements Serializable {
     }
 
     public String salvar() {
-        System.out.println("AQ ESAT" + corrida.getNome());
-        if (corridaService.inserir(corrida)) {
+        if (corridaService.inserir(corrida , itensCorrida)) {
             UtilMensagens.mensagemSucesso("Sucesso", "Corrida salva com sucesso !");
             this.listar();
             return "list.xhtml?faces-redirect=true";
@@ -47,7 +52,7 @@ public class CorridaController implements Serializable {
     }
 
     public String alterar() {
-        if (corridaService.alterar(corrida)) {
+        if (corridaService.alterar(corrida, itensCorrida)) {
             UtilMensagens.mensagemSucesso("Sucesso", "Corrida alterada com sucesso !");
             this.listar();
             return "list.xhtml?faces-redirect=true";
@@ -68,10 +73,25 @@ public class CorridaController implements Serializable {
     }
 
     public String buscaDados(Corrida corrida) {
+        itemCorrida = new Resultado();
         this.corrida = corrida;
+        this.itensCorrida = corridaService.listarItens(corrida);
         return "alter.xhtml?faces-redirect=true";
     }
 
+    public void addPiloto() {
+        if (itemCorrida.getPiloto() == null) {
+            UtilMensagens.mensagemErro("Erro", "Informe o serviço e a quantidade");
+        } else {
+            itensCorrida.add(itemCorrida);
+            itemCorrida = new Resultado();
+        }
+    }
+    
+    public void removeCorrida (Resultado itemCorrida) {
+        itensCorrida.remove(itemCorrida);
+    }
+    
     public Corrida getCorrida() {
         return corrida;
     }
@@ -96,4 +116,22 @@ public class CorridaController implements Serializable {
         this.corridas = corridas;
     }
 
+    public List<Resultado> getItensCorrida() {
+        return itensCorrida;
+    }
+
+    public void setItensCorrida(List<Resultado> itensCorrida) {
+        this.itensCorrida = itensCorrida;
+    }
+
+    public Resultado getItemCorrida() {
+        return itemCorrida;
+    }
+
+    public void setItemCorrida(Resultado itemCorrida) {
+        this.itemCorrida = itemCorrida;
+    }
+
+    
+    
 }

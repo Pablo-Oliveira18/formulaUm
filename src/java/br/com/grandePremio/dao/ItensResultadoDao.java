@@ -1,19 +1,22 @@
 package br.com.grandePremio.dao;
 
 import br.com.grandePremio.domain.Corrida;
+import br.com.grandePremio.domain.Resultado;
 import br.com.grandePremio.util.HibernateUtil;
 import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 
-public class CorridaDao {
-    public List<Corrida> listar() {
+public class ItensResultadoDao {
+    
+    public List<Resultado> listar(Corrida corrida) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try {
-            List<Corrida> corridas = session.createQuery("from Corrida").list();
+            List<Resultado> itensResultado = session.createQuery("from Resultado where idCorrida = " + corrida.getId() + " order by sequencia").list();
             session.getTransaction().commit();
-            return corridas;
+            return itensResultado;
         } catch (Exception e) {
             e.printStackTrace();
             session.getTransaction().rollback();
@@ -21,40 +24,41 @@ public class CorridaDao {
         }
     }
 
-    public Corrida consulta(Integer id) {
+    public boolean inserir(Resultado itemResultado) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try {
-            Corrida corrida = (Corrida) session.createQuery("from Corrida where id = " + id).uniqueResult(); // uniqueResult retorna apenas 1 resultado
+            session.save(itemResultado);
             session.getTransaction().commit();
-            return corrida;
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
             session.getTransaction().rollback();
-            return null;
+            return false;
         }
     }
 
-    public Integer inserir(Corrida corrida) {
+    public boolean alterar(Resultado itemResultado) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try {
-            Integer id = (Integer) session.save(corrida);
+            session.update(itemResultado);
             session.getTransaction().commit();
-            return id;
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
             session.getTransaction().rollback();
-            return null;
+            return false;
         }
-
     }
 
     public boolean excluir(Corrida corrida) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try {
-            session.delete(corrida);
+            Query query = session.createQuery("delete Resultado where idCorrida = :idOS");
+            query.setParameter("idOS", corrida.getId());
+            query.executeUpdate();
             session.getTransaction().commit();
             return true;
         } catch (Exception e) {
@@ -62,22 +66,6 @@ public class CorridaDao {
             session.getTransaction().rollback();
             return false;
         }
-
-    }
-
-    public boolean alterar(Corrida corrida) {
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
-        try {
-            session.update(corrida);
-            session.getTransaction().commit();
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            session.getTransaction().rollback();
-            return false;
-        }
-
     }
     
 }

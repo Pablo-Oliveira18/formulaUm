@@ -39,8 +39,8 @@ public class Corrida implements Serializable {
     @Column(name = "paisOrigem")
     private String paisOrigem;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCorrida")
-    private List<Resultado> resultado;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pilotosCorridaPk.corrida")
+    private List<Resultado> itensResultado;
 
     public Corrida() {
     }
@@ -79,13 +79,15 @@ public class Corrida implements Serializable {
         this.paisOrigem = paisOrigem;
     }
 
-    public List<Resultado> getResultado() {
-        return resultado;
+    public List<Resultado> getItensResultado() {
+        return itensResultado;
     }
 
-    public void setResultado(List<Resultado> resultado) {
-        this.resultado = resultado;
+    public void setItensResultado(List<Resultado> itensResultado) {
+        this.itensResultado = itensResultado;
     }
+
+
 
     @Override
     public int hashCode() {
