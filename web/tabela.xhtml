@@ -5,27 +5,36 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    
     <ui:composition template="/private/template/template.xhtml">
         <ui:define name="conteudo">
-            
 
-            <p:panel id="panel" header="Tabela de pontos" style="margin: 15px;background-color: #e80000">
-                <p:dataTable value="#{corridaMB.itensCorrida}" var="piloto" emptyMessage="Nenhum GP realizado">
-                    <p:column headerText="Posição">
-                        
+            <f:event listener="#{resultadoMB.listar()}" type="preRenderView" />
+
+            <p:panel id="panel" header="Pilotos" style="margin: 15px;background-color: #e80000">
+                <p:dataTable value="#{resultadoMB.resultados}" var="res" emptyMessage="Nenhum piloto cadastrado" style="background-color: #363535">
+
+                    <p:column id="nome" headerText="Piloto" style="font-weight: bold; color: black">
+                        <div style="color: blue; font-weight: bold">
+                            #{res.piloto.nome}
+                        </div>
                     </p:column>
-                    <p:column headerText="Piloto">
-                        
+
+                    <p:column id="a" headerText="Equipe"  style="font-weight: bold; color: black">
+                        #{res.piloto.equipe.nome}
                     </p:column>
-                    <p:column headerText="Equipe">
+
+                    <p:column id="b" headerText="Corrida" style="color: black">
+                        #{res.pilotosCorridaPk.corrida.nome}
                     </p:column>
-                    <p:column headerText="Pontos">
+
+                    <p:column id="pontos" headerText="Pontos" width="150" style="text-align: center">
+                        #{res.piloto.pontos}
                     </p:column>
-                    
-                    <p:column headerText="Corrida">
-                    </p:column>
-                </p:dataTable> 
+
+
+                </p:dataTable>
+                <br/>
+                <br/>
             </p:panel>
         </ui:define>
     </ui:composition>

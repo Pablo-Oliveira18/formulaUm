@@ -25,6 +25,10 @@ public class PilotoController {
     public void listar() {
         pilotos = pilotoService.listar();
     }
+    
+    public void listarInner(){
+        pilotos = pilotoService.listarInner();
+    }
 
     public String novo() {
         piloto = new Piloto();

@@ -8,11 +8,26 @@ import org.hibernate.Session;
 
 public class PilotoDao {
     
+
+    public List<Piloto> listarInner() {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        try {
+            List<Piloto> pilotos = session.createQuery("from Piloto inner join resultado on piloto.id = resultado.idPiloto").list();
+            session.getTransaction().commit();
+            return pilotos;
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+            return null;
+        }
+    }
+    
     public List<Piloto> listar() {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try {
-            List<Piloto> pilotos = session.createQuery("from Piloto order by nome").list();
+            List<Piloto> pilotos = session.createQuery("from Piloto order by pontos desc").list();
             session.getTransaction().commit();
             return pilotos;
         } catch (Exception e) {

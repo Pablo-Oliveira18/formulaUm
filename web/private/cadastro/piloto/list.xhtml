@@ -13,15 +13,16 @@
             <p:panel id="panel" header="Pilotos" style="margin: 15px;background-color: #e80000">
                 <p:dataTable value="#{pilotoMB.pilotos}" var="piloto" emptyMessage="Nenhum piloto cadastrado" style="background-color: #363535">
                     
-                    <p:column id="nome" headerText="Nome" sortBy="#{piloto.nome}" style="font-weight: bold; color: black">
+                    <p:column id="nome" headerText="Nome" style="font-weight: bold; color: black">
                         #{piloto.nome}
                     </p:column>
                     <p:column id="equipe" headerText="Equipe">
                         #{piloto.equipe.nome}
                     </p:column>
-                    <p:column id="pontos" headerText="Pontos" width="150" style="text-align: center">
+                    <p:column id="pontos" headerText="Pontos" sortBy="#{piloto.pontos}" width="150" style="text-align: center">
                         #{piloto.pontos}
                     </p:column>
+                    
 
                     <p:column headerText="Editar" width="70" style="text-align: center">
                         <p:commandButton action="#{pilotoMB.buscaDados(piloto)}" icon="ui-icon-pencil" /> 

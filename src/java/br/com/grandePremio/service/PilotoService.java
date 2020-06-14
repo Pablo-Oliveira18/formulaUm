@@ -13,6 +13,10 @@ public class PilotoService {
     public List<Piloto> listar() {
         return pilotoDao.listar();
     }
+    
+    public List<Piloto> listarInner() {
+        return pilotoDao.listarInner();
+    }
 
     public Piloto consultar(Integer id) {
         return pilotoDao.consulta(id);
