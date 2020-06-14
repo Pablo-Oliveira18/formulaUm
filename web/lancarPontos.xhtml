@@ -48,23 +48,16 @@
                
                 <br/>
                 <div align="center" style="color: blue">
-                    <p:dataList value="#{pontuacaoMB.listaGp}" var="gp" type="ordered" >
+                    <p:dataList value="#{pontuacaoMB.listaGp}" var="gp" type="ordered" emptyMessage="Nenhum Piloto Adicionado">
                         <f:facet name="header">
                             Previa de Pontuações
                         </f:facet>
                         Piloto : #{gp.piloto.nome},Pontuação #{gp.pontuacao}, Equipe #{gp.piloto.equipe.nome}
                     </p:dataList>
                 </div>
-                <br/><br/><br/>
-                <div class="ui-g" style="color: white; background: black">
-                    <h:outputText value="#{pontuacaoMB.result}" escape="false"/>
-                </div>
-                <br/>
-
-              
+  
             </p:panel>
 
         </ui:define>
     </ui:composition>
 </html>
-

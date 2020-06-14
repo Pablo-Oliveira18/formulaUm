@@ -3,6 +3,7 @@ package br.com.grandePremio.controller;
 import br.com.grandePremio.domain.Piloto;
 import br.com.grandePremio.service.PilotoService;
 import br.com.grandePremio.util.UtilMensagens;
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -35,6 +36,9 @@ public class PilotoController {
         return "new.xhtml?faces-redirect=true";
     }
 
+    public String lancarPontos() {
+        return "lancarPontos.xhtml?faces-redirect=true";
+    }
     public String cancelar() {
         return "list.xhtml?faces-redirect=true";
     }

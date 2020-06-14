@@ -53,7 +53,7 @@ public class PontuacaoControler implements Serializable{
         this.listaGp.removeAll(listaGp);
         this.classificacao();
         
-        return "lancarPontos.xhtml?faces-redirect=true";
+        return "tabela.xhtml?faces-redirect=true";
     }
     
     public void classificacao(){

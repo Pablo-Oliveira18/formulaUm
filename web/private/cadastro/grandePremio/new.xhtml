@@ -25,10 +25,10 @@
                     <div class="ui-g-8">
                         <label>Pilotos</label><br/>
                         <p:selectOneMenu id="piloto" value="#{corridaMB.itemCorrida.piloto}" style="width: 95%"
-                                         converter="entityConverter">
+                                converter="entityConverter">
                             <f:selectItem itemLabel="-- Selecione um Piloto --" noSelectionOption="true"/>
                             <f:selectItems value="#{pilotoMB.pilotos}" var="piloto"
-                                           itemLabel="#{piloto.nome}" itemValue="#{piloto}"/>
+                                itemLabel="#{piloto.nome}" itemValue="#{piloto}"/>
                             <p:ajax event="change"/>
                         </p:selectOneMenu>
                     </div>
@@ -38,7 +38,7 @@
                     <div class="ui-g-2" style="color: blue;">
 
                         <p:commandButton id="adicio" action="#{corridaMB.addPiloto()}" value="Adicionar" 
-                                         icon="ui-icon-plus" update="itensCorrida, piloto, growl"/>
+                            icon="ui-icon-plus" update="itensCorrida, piloto, growl"/>
                     </div>
                     
                 </div>
